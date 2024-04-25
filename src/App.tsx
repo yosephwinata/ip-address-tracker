@@ -1,4 +1,5 @@
 import InputField from "./assets/components/InputField";
+import ResultsCard from "./assets/components/ResultsCard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         IP Address Tracker
       </h1>
       <InputField />
+      <ResultsCard />
     </div>
   );
 }
