@@ -3,6 +3,8 @@ import { useIPAddress } from "./useIPAddress";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Map from "./components/MapContainer";
+import mobileImage from "/src/assets/images/pattern-bg-mobile.png";
+import desktopImage from "/src/assets/images/pattern-bg-desktop.png";
 
 // const queryClient = new QueryClient({
 //   defaultOptions: {
@@ -50,12 +52,12 @@ function AppContainer() {
   return (
     <div className="relative flex h-screen flex-col">
       <img
-        src="/src/assets/images/pattern-bg-mobile.png"
+        src={mobileImage}
         alt="Background"
         className="block h-auto w-screen md:hidden"
       />
       <img
-        src="/src/assets/images/pattern-bg-desktop.png"
+        src={desktopImage}
         alt="Background"
         className="hidden h-auto w-screen md:block"
       />
