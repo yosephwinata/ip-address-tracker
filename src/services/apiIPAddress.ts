@@ -8,11 +8,15 @@ export const getIPAddress = async (
   // Prepare the query string according to the keyword format (ip or domain)
   const apiKey = import.meta.env.VITE_API_KEY;
   let queryString;
-  if (checkIpAddressFormat(keyword)) {
+  if (!keyword) {
+    queryString = `/country,city?apiKey=${apiKey}`;
+  } else if (checkIpAddressFormat(keyword)) {
     queryString = `/country,city?apiKey=${apiKey}&ipAddress=${keyword}`;
   } else {
     queryString = `/country,city?apiKey=${apiKey}&domain=${keyword}`;
   }
+
+  console.log("queryString", queryString);
 
   // Fetch the api
   try {
