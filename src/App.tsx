@@ -52,15 +52,19 @@ function AppContainer() {
       <img
         src="/src/assets/images/pattern-bg-mobile.png"
         alt="Background"
-        className="h-auto w-screen"
-        // className="absolute left-0 top-0 -z-10 h-auto w-screen"
+        className="block h-auto w-screen md:hidden"
+      />
+      <img
+        src="/src/assets/images/pattern-bg-desktop.png"
+        alt="Background"
+        className="hidden h-auto w-screen md:block"
       />
       <Map lat={lat} lng={lng} />
-      <div className="absolute left-1/2 top-0 z-20 mt-[1.625rem] w-[20.4375rem] -translate-x-1/2">
-        <h1 className="mb-7 text-center text-[1.625rem] font-medium -tracking-[0.23px] text-white">
+      <div className="absolute left-1/2 top-0 z-20 mt-[1.625rem] w-[20.4375rem] -translate-x-1/2 md:mt-8 md:w-[70rem]">
+        <h1 className="mb-7 text-center text-[1.625rem] font-medium -tracking-[0.23px] text-white md:mb-8 md:text-[2rem]">
           IP Address Tracker
         </h1>
-        <div className="mb-6 overflow-hidden rounded-[15px]">
+        <div className="mx-auto mb-6 w-full overflow-hidden rounded-[15px] md:mb-12 md:w-[35rem]">
           <input
             className="h-[3.625rem] w-full px-6 text-[1.125rem] text-very-dark-gray"
             placeholder="IP address or domain"
@@ -69,7 +73,7 @@ function AppContainer() {
             onKeyDown={handleKeyDown}
           />
         </div>
-        <article className="flex flex-col gap-2 rounded-[15px] bg-white px-2 py-6">
+        <article className="flex flex-col gap-2 rounded-[15px] bg-white px-2 py-6 md:flex-row md:py-9">
           <CardElement title="IP ADDRESS" data={ip} />
           <CardElement title="LOCATION" data={location} />
           <CardElement title="TIMEZONE" data={timezone} />
@@ -87,11 +91,11 @@ interface CardElementProps {
 
 const CardElement = ({ title, data = "" }: CardElementProps) => {
   return (
-    <div>
-      <p className="mb-2 text-center text-[0.625rem] font-bold tracking-[1.46px] text-dark-gray">
+    <div className="px-8">
+      <p className="mb-2 text-center text-[0.625rem] font-bold tracking-[1.46px] text-dark-gray md:text-left md:text-[0.75rem] md:tracking-[1.75px]">
         {title}
       </p>
-      <p className="text-center text-[1.25rem] font-medium -tracking-[0.18px] text-very-dark-gray">
+      <p className="md:tracking-[-0.23px text-center text-[1.25rem] font-medium -tracking-[0.18px] text-very-dark-gray md:text-left md:text-[1.625rem] md:leading-tight">
         {data}
       </p>
     </div>
