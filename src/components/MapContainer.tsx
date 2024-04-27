@@ -10,8 +10,9 @@ const Map = ({ lat, lng }: MapProps) => {
   if (lat === undefined || lng === undefined) {
     return <div>Loading map...</div>;
   }
+
   return (
-    <div className="h-screen w-full">
+    <div className="z-0 flex-1">
       <MapContainer
         center={[lat, lng]}
         zoom={13}

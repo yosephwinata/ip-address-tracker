@@ -48,31 +48,34 @@ function AppContainer() {
   };
 
   return (
-    <div className="relative h-screen px-6 pt-[1.625rem]">
+    <div className="relative flex h-screen flex-col">
       <img
         src="/src/assets/images/pattern-bg-mobile.png"
         alt="Background"
-        className="absolute left-0 top-0 -z-10 h-auto w-screen"
+        className="h-auto w-screen"
+        // className="absolute left-0 top-0 -z-10 h-auto w-screen"
       />
-      <h1 className="mb-7 text-center text-[1.625rem] font-medium -tracking-[0.23px] text-white">
-        IP Address Tracker
-      </h1>
-      <div className="mb-6 overflow-hidden rounded-[15px]">
-        <input
-          className="h-[3.625rem] w-full px-6 text-[1.125rem] text-very-dark-gray"
-          placeholder="IP address or domain"
-          value={searchInput}
-          onChange={handleSearchInputChange}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-      <article className="flex flex-col gap-6 rounded-[15px] bg-white pt-[1.625rem]">
-        <CardElement title="IP ADDRESS" data={ip} />
-        <CardElement title="LOCATION" data={location} />
-        <CardElement title="TIMEZONE" data={timezone} />
-        <CardElement title="ISP" data={isp} />
-      </article>
       <Map lat={lat} lng={lng} />
+      <div className="absolute left-1/2 top-0 z-20 mt-[1.625rem] w-[20.4375rem] -translate-x-1/2">
+        <h1 className="mb-7 text-center text-[1.625rem] font-medium -tracking-[0.23px] text-white">
+          IP Address Tracker
+        </h1>
+        <div className="mb-6 overflow-hidden rounded-[15px]">
+          <input
+            className="h-[3.625rem] w-full px-6 text-[1.125rem] text-very-dark-gray"
+            placeholder="IP address or domain"
+            value={searchInput}
+            onChange={handleSearchInputChange}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        <article className="flex flex-col gap-2 rounded-[15px] bg-white px-2 py-6">
+          <CardElement title="IP ADDRESS" data={ip} />
+          <CardElement title="LOCATION" data={location} />
+          <CardElement title="TIMEZONE" data={timezone} />
+          <CardElement title="ISP" data={isp} />
+        </article>
+      </div>
     </div>
   );
 }
