@@ -16,8 +16,6 @@ export const getIPAddress = async (
     queryString = `/country,city?apiKey=${apiKey}&domain=${keyword}`;
   }
 
-  console.log("queryString", queryString);
-
   // Fetch the api
   try {
     const response = await axiosInstance.get<IPAddressResponse>(queryString);

@@ -2,15 +2,18 @@ import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useIPAddress } from "./useIPAddress";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Map from "./components/MapContainer";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 3 * 1000, // in milisecond
-      // refetchOnWindowFocus: false, // default: true
-    },
-  },
-});
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       staleTime: 3 * 1000, // in milisecond
+//       // refetchOnWindowFocus: false, // default: true
+//     },
+//   },
+// });
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
@@ -24,11 +27,14 @@ const App = () => {
 function AppContainer() {
   const [searchInput, setSearchInput] = useState("");
   const [fetchKeyword, setFetchKeyword] = useState("");
-  const { data, isLoading, isError } = useIPAddress(fetchKeyword);
+  const { data } = useIPAddress(fetchKeyword);
+  // const { data, isLoading, isError } = useIPAddress(fetchKeyword);
   const ip = data?.ip;
   const location = `${data?.location?.city}, ${data?.location?.region}`;
   const timezone = `UTC ${data?.location?.timezone}`;
   const isp = data?.isp || "N/A";
+  const lat = data?.location?.lat;
+  const lng = data?.location?.lng;
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -66,6 +72,7 @@ function AppContainer() {
         <CardElement title="TIMEZONE" data={timezone} />
         <CardElement title="ISP" data={isp} />
       </article>
+      <Map lat={lat} lng={lng} />
     </div>
   );
 }
